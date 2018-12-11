@@ -1,38 +1,87 @@
-#include "utility/include/LogBook.h"
-#include "utility/include/Timer.h"
 #include <thread>
 
+#include "utility/include/LogBook.h"
+#include "utility/include/Timer.h"
+#include "random_number/include/Lcg.h"
+#include "Test.h"
+#include "utility/include/Exception.h"
 
+void Test();
+
+//------------------------------------------------------------
+//------------------------------------------------------------
 int main()
 {
-    Peanut::LogBook::GetLogBook();
+    auto& logBook = Peanut::LogBook::GetLogBook();
 
-    Peanut::Timer t;
-
-    t.StartOrResume("total");
-
-    t.StartOrResume("1");
+    try
     {
-        std::chrono::seconds dura(1);
-        std::this_thread::sleep_for(dura);
+        Test();
     }
-    t.Stop("1");
-
-    t.StartOrResume("2");
+    catch(Peanut::PeanutException& e)
     {
-        std::chrono::seconds dura(2);
-        std::this_thread::sleep_for(dura);
+        logBook << e.what();
     }
-    t.Stop("2");
-
+    catch(...)
     {
-        std::chrono::seconds dura(1);
-        std::this_thread::sleep_for(dura);
+        logBook << "--> Unhandled exception." << std::endl;
     }
-
-    t.Stop("total");
-
-    t.ShowAll();
 
     return 0;
 }
+
+//------------------------------------------------------------
+//------------------------------------------------------------
+void Test()
+{
+    // Peanut::Timer t;
+
+    // t.StartOrResume("total");
+
+    // t.StartOrResume("1");
+    // {
+        // std::chrono::seconds dura(1);
+        // std::this_thread::sleep_for(dura);
+    // }
+    // t.Stop("1");
+
+    // t.StartOrResume("2");
+    // {
+        // std::chrono::seconds dura(2);
+        // std::this_thread::sleep_for(dura);
+    // }
+    // t.Stop("2");
+
+    // {
+        // std::chrono::seconds dura(1);
+        // std::this_thread::sleep_for(dura);
+    // }
+
+    // t.Stop("total");
+
+    // t.ShowAll();
+
+    TestManager tm;
+    tm.BiuCPU();
+    tm.BiuGPU();
+}
+
+//------------------------------------------------------------
+//------------------------------------------------------------
+void TestManager::BiuCPU()
+{
+    Peanut::Lcg lcg;
+    lcg.Initialize(1000ULL);
+
+    double sum = 0.0;
+    for(int i = 0; i < 100; ++i)
+    {
+        sum += lcg.GenerateRN();
+    }
+
+    auto& logBook = Peanut::LogBook::GetLogBook();
+    logBook << "CPU sum = " << sum << std::endl;
+}
+
+
+

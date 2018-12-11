@@ -21,19 +21,19 @@ public:
 
 //------------------------------------------------------------
 //------------------------------------------------------------
-PeanutException::PeanutException(const std::string& message) :
+inline PeanutException::PeanutException(const std::string& message) :
 std::runtime_error(message)
 {}
 
 //------------------------------------------------------------
 //------------------------------------------------------------
-PeanutException::PeanutException(const char* message) :
+inline PeanutException::PeanutException(const char* message) :
 std::runtime_error(message)
 {}
 
 //------------------------------------------------------------
 //------------------------------------------------------------
-const char* PeanutException::what() const noexcept
+inline const char* PeanutException::what() const noexcept
 {
     return std::runtime_error::what();
 }
