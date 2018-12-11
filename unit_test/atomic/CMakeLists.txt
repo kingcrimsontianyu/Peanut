@@ -1,6 +1,7 @@
 if(BUILD_TESTING)
     add_executable(test-atomic Test.cpp
-                               ${PROJECT_SOURCE_DIR}/src/utility/LogBook.cpp)
+                               ${PROJECT_SOURCE_DIR}/src/utility/LogBook.cpp
+                               ${PROJECT_SOURCE_DIR}/src/utility/Timer.cpp)
     target_include_directories(test-atomic PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
     add_test(NAME test_atomic
