@@ -38,7 +38,7 @@ endmacro()
 macro(SetGPUOption)
     find_package(CUDA REQUIRED)
     if(CUDA_VERSION_STRING VERSION_LESS "9.1")
-        string(CONCAT ERROR_MSG "--> ARCHER: Current CUDA version "
+        string(CONCAT ERROR_MSG "--> Peanut: Current CUDA version "
                              ${CUDA_VERSION_STRING}
                              " is too old. Must upgrade it to 9.1 or newer.")
         message(FATAL_ERROR ${ERROR_MSG})
