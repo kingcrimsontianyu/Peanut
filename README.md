@@ -11,6 +11,13 @@ Include the following header file in your device code:
 src/atomic/include/PeanutAtomic.h
 ```
 
+GPU architecture | Best method to use
+---------------- | -------------
+Kepler/Maxwell       | double Peanut::atomicAddFP64WAG(double* address, double val)
+                     | float2 Peanut::atomicAddKahanOptimized(float2* address, float val)
+Pascal/Volta/Turing  | double atomicAdd(double* address, double val)
+                     | double Peanut::atomicAddFP64WIB(double* address, double val)
+
 
 # How to build and test Peanut
 Peanut is written in C++/CUDA, using Cmake as the build and test system.
