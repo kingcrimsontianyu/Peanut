@@ -13,8 +13,8 @@ src/atomic/include/PeanutAtomic.h
 
 GPU architecture | Best method to use
 ---------------- | -------------
-Kepler/Maxwell       | double Peanut::atomicAddFP64WAG(double* address, double val)<br>float2 Peanut::atomicAddKahanOptimized(float2* address, float val)
-Pascal/Volta/Turing  | double atomicAdd(double* address, double val)<br>double Peanut::atomicAddFP64WIB(double* address, double val)
+Kepler/Maxwell       | `double Peanut::atomicAddFP64WAG(double* address, double val)`<br>`float2 Peanut::atomicAddKahanOptimized(float2* address, float val)`
+Pascal/Volta/Turing  | `double atomicAdd(double* address, double val)`<br>`double Peanut::atomicAddFP64WIB(double* address, double val)`
 
 
 # How to build and test Peanut
