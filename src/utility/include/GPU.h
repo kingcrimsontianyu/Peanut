@@ -6,6 +6,9 @@
 #include "device_launch_parameters.h"
 #include "utility/include/Exception.h"
 
+//------------------------------------------------------------
+// Get CUDA API error code. Throw exception on failure.
+//------------------------------------------------------------
 #define HANDLE_GPU_ERROR(err) \
 do \
 { \
@@ -22,5 +25,20 @@ do \
 } \
 while(0)
 
+namespace Peanut
+{
+//------------------------------------------------------------
+//------------------------------------------------------------
+void QueryGPU();
+
+//------------------------------------------------------------
+//------------------------------------------------------------
+void SetGPUByName(const std::string& name);
+
+//------------------------------------------------------------
+//------------------------------------------------------------
+void SetGPUByCudaIndex(const int& cudaIdx);
+
+} // end namespace Peanut
 
 #endif
