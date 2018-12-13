@@ -1,0 +1,1 @@
+This test compares the performance and accuracy of several atomic-add methods.
