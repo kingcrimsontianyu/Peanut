@@ -30,16 +30,21 @@ cmake \
 ../Peanut
 ```
 
-Then to build:
+To build all test executables:
 ```
-make test-atomic
+make
 ```
 
-Then to test:
+The available test executables include:
+* `test-atomic`
+* `test-persistent-thread`
+
+
+To run the test:
 ```
-ctest -V -R test_gpu_atomic_TitanXPascal
+ctest -V -R [test_name]
 ```
-All tests are listed in `unit_test/atomic/CMakeLists.txt`.
+
 
 
 
